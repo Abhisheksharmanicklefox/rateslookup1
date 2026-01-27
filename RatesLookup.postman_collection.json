@@ -1,0 +1,554 @@
+{
+  "info": {
+    "name": "RatesLookup API",
+    "description": "Complete API collection for RatesLookup backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000/api/v1",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health & Info",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/health",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["health"]
+            }
+          }
+        },
+        {
+          "name": "API Documentation",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/docs",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "docs"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Leads",
+      "item": [
+        {
+          "name": "Create Lead",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"John\",\n  \"email\": \"john@example.com\",\n  \"phone\": \"1234567890\",\n  \"source\": \"website\",\n  \"utm_source\": \"google\",\n  \"utm_medium\": \"cpc\",\n  \"utm_campaign\": \"mortgage_rates\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/leads",
+              "host": ["{{baseUrl}}"],
+              "path": ["leads"]
+            }
+          }
+        },
+        {
+          "name": "Get All Leads",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/leads?page=1&limit=20",
+              "host": ["{{baseUrl}}"],
+              "path": ["leads"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Lead by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/leads/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["leads", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "uuid-here"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Lead Statistics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/leads/statistics",
+              "host": ["{{baseUrl}}"],
+              "path": ["leads", "statistics"]
+            }
+          }
+        },
+        {
+          "name": "Get Leads by Source",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/leads/by-source",
+              "host": ["{{baseUrl}}"],
+              "path": ["leads", "by-source"]
+            }
+          }
+        },
+        {
+          "name": "Get Lead Funnel",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/leads/funnel",
+              "host": ["{{baseUrl}}"],
+              "path": ["leads", "funnel"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Applications",
+      "item": [
+        {
+          "name": "Create Application",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"phone\": \"1234567890\",\n  \"loan_amount\": 300000,\n  \"property_value\": 400000,\n  \"loan_type\": \"conventional\",\n  \"property_type\": \"single_family\",\n  \"credit_score_range\": \"Good (670-739)\",\n  \"employment_type\": \"full_time\",\n  \"annual_income\": 80000,\n  \"down_payment\": 60000\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/applications",
+              "host": ["{{baseUrl}}"],
+              "path": ["applications"]
+            }
+          }
+        },
+        {
+          "name": "Get All Applications",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/applications?page=1&limit=20",
+              "host": ["{{baseUrl}}"],
+              "path": ["applications"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Application by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/applications/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["applications", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "uuid-here"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Application",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"loan_amount\": 350000,\n  \"property_value\": 450000,\n  \"current_step\": \"property_info\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/applications/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["applications", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "uuid-here"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Submit Application",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/applications/:id/submit",
+              "host": ["{{baseUrl}}"],
+              "path": ["applications", ":id", "submit"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "uuid-here"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Application Statistics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/applications/statistics",
+              "host": ["{{baseUrl}}"],
+              "path": ["applications", "statistics"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "OTP",
+      "item": [
+        {
+          "name": "Send OTP",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone\": \"1234567890\",\n  \"application_id\": \"uuid-here\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/otp/send",
+              "host": ["{{baseUrl}}"],
+              "path": ["otp", "send"]
+            }
+          }
+        },
+        {
+          "name": "Verify OTP",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone\": \"1234567890\",\n  \"otp\": \"123456\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/otp/verify",
+              "host": ["{{baseUrl}}"],
+              "path": ["otp", "verify"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Callbacks",
+      "item": [
+        {
+          "name": "Request Callback",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"email\": \"john@example.com\",\n  \"phone\": \"1234567890\",\n  \"preferred_time\": \"morning\",\n  \"message\": \"I'd like to discuss mortgage options\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/callbacks",
+              "host": ["{{baseUrl}}"],
+              "path": ["callbacks"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Rates",
+      "item": [
+        {
+          "name": "Get Rates for Application",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/rates/:applicationId",
+              "host": ["{{baseUrl}}"],
+              "path": ["rates", ":applicationId"],
+              "variable": [
+                {
+                  "key": "applicationId",
+                  "value": "uuid-here"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Calculate Rates",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"loan_amount\": 300000,\n  \"property_value\": 400000,\n  \"credit_score_range\": \"Good (670-739)\",\n  \"loan_type\": \"conventional\",\n  \"loan_term\": 30\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/rates/calculate",
+              "host": ["{{baseUrl}}"],
+              "path": ["rates", "calculate"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Explore Rates",
+      "item": [
+        {
+          "name": "Start Rate Exploration",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"loan_amount\": 300000,\n  \"property_value\": 400000,\n  \"credit_score_range\": \"Good (670-739)\",\n  \"loan_type\": \"conventional\",\n  \"property_type\": \"single_family\",\n  \"zip_code\": \"12345\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/explore-rates",
+              "host": ["{{baseUrl}}"],
+              "path": ["explore-rates"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tools",
+      "item": [
+        {
+          "name": "Get All Tools",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/tools",
+              "host": ["{{baseUrl}}"],
+              "path": ["tools"]
+            }
+          }
+        },
+        {
+          "name": "Get Tool by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/tools/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["tools", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "uuid-here"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Run Tool",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"inputs\": {\n    \"loan_amount\": 300000,\n    \"interest_rate\": 3.5,\n    \"loan_term\": 30\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/tools/:id/run",
+              "host": ["{{baseUrl}}"],
+              "path": ["tools", ":id", "run"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "uuid-here"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "FAQs",
+      "item": [
+        {
+          "name": "Get All FAQs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/faqs",
+              "host": ["{{baseUrl}}"],
+              "path": ["faqs"]
+            }
+          }
+        },
+        {
+          "name": "Get FAQ Categories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/faqs/categories",
+              "host": ["{{baseUrl}}"],
+              "path": ["faqs", "categories"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Testimonials",
+      "item": [
+        {
+          "name": "Get All Testimonials",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/testimonials",
+              "host": ["{{baseUrl}}"],
+              "path": ["testimonials"]
+            }
+          }
+        },
+        {
+          "name": "Get Featured Testimonials",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/testimonials/featured",
+              "host": ["{{baseUrl}}"],
+              "path": ["testimonials", "featured"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Myths",
+      "item": [
+        {
+          "name": "Get All Myths",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/myths",
+              "host": ["{{baseUrl}}"],
+              "path": ["myths"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
